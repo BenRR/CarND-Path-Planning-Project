@@ -196,7 +196,7 @@ int main() {
   double ref_vel = 0;
 
 
-  h.onMessage([&map_waypoints_x, &map_waypoints_y, &map_waypoints_s, &map_waypoints_dx, &map_waypoints_dy](
+  h.onMessage([&map_waypoints_x, &map_waypoints_y, &map_waypoints_s, &map_waypoints_dx, &map_waypoints_dy, &lane, &ref_vel](
     uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length,
     uWS::OpCode opCode) {
       // "42" at the start of the message means there's a websocket message event.
@@ -297,8 +297,8 @@ int main() {
               ptsx.push_back(ref_x_prev);
               ptsx.push_back(ref_x);
 
-              ptsx.push_back(ref_y_prev);
-              ptsx.push_back(ref_y);
+              ptsy.push_back(ref_y_prev);
+              ptsy.push_back(ref_y);
             }
 
             // further 30m, 60m and 90m points for smooth poly
